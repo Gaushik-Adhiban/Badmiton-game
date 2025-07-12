@@ -1,0 +1,186 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  background: radial-gradient(circle at top, #dbeafe, #60a5fa);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.main-container {
+  max-width: 960px;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  animation: fadeIn 1s ease-in-out;
+}
+
+header {
+  background: #1e40af;
+  color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
+  margin-bottom: 16px;
+}
+
+.game-title {
+  font-size: 32px;
+  animation: bounce 2s infinite;
+}
+
+.rules {
+  font-size: 14px;
+  color: #e0e7ff;
+}
+
+.scoreboard {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  color: #1e293b;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.scoreboard .score {
+  flex: 1;
+}
+
+.scoreboard .level {
+  flex: 1;
+  text-align: center;
+}
+
+canvas.glow-canvas {
+  border: 4px solid #2563eb;
+  border-radius: 10px;
+  background: white;
+  box-shadow: 0 0 18px rgba(59, 130, 246, 0.7);
+  transition: transform 0.3s;
+}
+
+canvas:hover {
+  transform: scale(1.03);
+}
+
+.info-bar {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.restart-btn {
+  background: #3b82f6;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background 0.3s, transform 0.2s ease;
+}
+
+.restart-btn:hover {
+  background: #2563eb;
+  transform: scale(1.05);
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(17, 24, 39, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
+  animation: fadeInOverlay 0.5s ease-in-out;
+}
+
+.message {
+  background: #111827;
+  padding: 40px;
+  color: white;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+}
+
+.message .pop {
+  font-size: 28px;
+  animation: popText 1s ease-in-out;
+}
+
+.message .fade-in {
+  opacity: 0;
+  animation: fadeIn 2s ease-in 0.5s forwards;
+}
+
+.celebration {
+  animation: burstAnimation 0.8s ease-in-out;
+  border: 2px dashed #facc15;
+}
+
+.fireworks {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.firework {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: transparent;
+  animation: firework 1.2s ease-out forwards;
+}
+
+.firework::before,
+.firework::after {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fffb00 0%, #ff0080 60%, transparent 80%);
+  opacity: 0.9;
+  animation: explode 1s ease-out forwards;
+}
+
+.firework::after {
+  background: radial-gradient(circle, #00ffff 0%, #00ff00 60%, transparent 80%);
+  transform: rotate(45deg);
+}
+
+.firework.delay1 { top: 20%; left: 30%; animation-delay: 0.2s; }
+.firework.delay2 { top: 50%; left: 60%; animation-delay: 0.4s; }
+.firework.delay3 { top: 70%; left: 20%; animation-delay: 0.6s; }
+.firework.delay4 { top: 40%; left: 80%; animation-delay: 0.8s; }
+.firework.delay5 { top: 60%; left: 50%; animation-delay: 1s; }
+
+@keyframes firework {
+  0% { transform: scale(0); opacity: 1; }
+  100% { transform: scale(1); opacity: 0; }
+}
+
+@keyframes explode {
+  0% {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ShuttleGameApp">
+<head>
+  <meta charset="UTF-8" />
+  <title>🏸 Shuttle Smash</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="app.js"></script>
+</head>
+<body ng-controller="GameController">
+  <div class="main-container">
+    <header>
+      <h1 class="game-title">🏸 Shuttle Smash</h1>
+      <p class="rules">Player 1: <b>W/S</b> | Player 2: <b>↑/↓</b></p>
+    </header>
+
+    <section class="game-area">
+      <div class="scoreboard">
+        <div class="score p1">P1 Score: {{ p1Score }} | 🏆 {{ p1LevelWins }}</div>
+        <div class="level">Level {{ level }} - First to {{ currentLevelPoints }} Points</div>
+        <div class="score p2">P2 Score: {{ p2Score }} | 🏆 {{ p2LevelWins }}</div>
+      </div>
+
+      <canvas id="gameCanvas" width="700" height="400" class="glow-canvas"></canvas>
+
+      <div class="info-bar">
+        <p class="speed">⚡ Speed: {{ currentSpeed }}</p>
+        <button class="restart-btn" ng-click="startGame()">🔁 Restart</button>
+      </div>
+    </section>
+
+    <!-- Level Animation Overlay -->
+    <div class="overlay" ng-show="showOverlay">
+      <div class="message">
+        <h2 class="pop">{{ overlayMessage }}</h2>
+        <p class="fade-in">Next level in 3...2...1</p>
+      </div>
+    </div>
+
+    <!-- Match Winner Celebration -->
+    <div class="overlay fireworks" ng-show="matchWinner">
+      <div class="message celebration">
+        <h1 class="burst">🎆 {{ matchWinner }} Wins the Match! 🎉</h1>
+        <button class="restart-btn" ng-click="restartMatch()">🎮 Play Again</button>
+      </div>
+    </div>
+    <!-- 🎇 Fireworks burst effect on match win -->
+<div class="fireworks" ng-show="showFireworks">
+  <div class="firework delay1"></div>
+  <div class="firework delay2"></div>
+  <div class="firework delay3"></div>
+  <div class="firework delay4"></div>
+  <div class="firework delay5"></div>
+</div>
+
+
+  </div>
+</body>
+</html>
